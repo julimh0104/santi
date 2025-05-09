@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Para Mi Amor</title>
+<style>
+  /* Fondo con gradiente y corazones flotantes */
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #ffe6f0, #ffd1dc);
+    overflow-x: hidden;
+    position: relative;
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+  }
+
+  @keyframes fadeIn {
+    to { opacity: 1; }
+  }
+
+  /* Corazones flotantes */
+  .heart {
+    position: fixed;
+    bottom: -50px;
+    font-size: 24px;
+    color: red;
+    opacity: 0.8;
+    animation: floatHeart 10s linear forwards;
+    z-index: 999;
+  }
+
+  @keyframes floatHeart {
+    0% {
+      transform: translateY(0) scale(0.8);
+      opacity: 0.8;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(-800px) scale(1.2);
+      opacity: 0;
+    }
+  }
+
+  /* Estilo para el botón de música */
+  .music-top {
+    position: fixed;
+    top: 10px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    z-index: 1000;
+  }
+
+  /* Contenedor principal con margen */
+  .main-container {
+    padding-top: 70px;
+    position: relative;
+    z-index: 1;
+  }
+
+  header {
+    background: rgba(255,255,255,0.8);
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    text-align: center;
+    border-radius: 15px;
+  }
+
+  h1 {
+    color: #d6336c;
+    font-size: 2.5em;
+    margin: 0;
+    font-family: 'Arial Black', sans-serif;
+  }
+
+  /* Estilo para la caja de contenido */
+  .content {
+    max-width: 900px;
+    margin: 20px auto;
+    background: rgba(255,255,255,0.9);
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+  }
+
+  /* Fotos con efecto y tamaño ajustado */
+  .photos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+  }
+
+  .photos img {
+    width: 200px;
+    height: 200px;
+    border-radius: 15px;
+    object-fit: cover;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+    border: 3px solid transparent;
+  }
+
+  /* Hover en imágenes */
+  .photos img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    border: 3px solid #d6336c;
+  }
+
+  /* Video estilo y tamaño */
+  .video-container {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  video {
+    width: 100%; /* se ajusta al contenedor */
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    border: 4px solid #d6336c;
+    transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
+  }
+
+  /* Opcional: efecto al pasar el ratón sobre el video */
+  video:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+  }
+
+  /* Texto con estilo bonito */
+  p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    color: #333;
+    margin: 15px 0;
+    text-align: justify;
+  }
+
+  /* Footer */
+  footer {
+    margin-top: 30px;
+    padding: 10px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 10px;
+    text-align: center;
+    font-size: 1em;
+    color: #555;
+  }
+
+  /* Botón con estilo llamativo */
+button {
+    padding: 10px 20px;
+    background-color: #d6336c;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.2s;
+  }
+
+button:hover {
+    background-color: #a52a58;
+    transform: scale(1.05);
+  }
+</style>
+</head>
+<body>
+
+<!-- Botón de música -->
+<div class="music-top">
+  <button onclick="toggleMusic()">Reproducir / Pausar Música</button>
+</div>
+
+<!-- Corazones flotantes continuos -->
+<script>
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = '❤️';
+    heart.style.left = Math.random() * 90 + 'vw';
+    heart.style.animationDuration = (5 + Math.random() * 5) + 's';
+    document.body.appendChild(heart);
+    setTimeout(() => {
+      heart.remove();
+    }, 10000);
+  }
+  setInterval(createHeart, 300);
+</script>
+
+<!-- Contenedor principal -->
+<div class="main-container">
+  <header>
+    <h1>Para El ADMV</h1>
+  </header>
+  <div class="content">
+    <!-- Música -->
+    <audio id="background-music" loop>
+      <source src="s.mp3" type="audio/mpeg" />
+      Tu navegador no soporta la reproducción de audio.
+    </audio>
+
+    <!-- Fotos ajustadas -->
+    <div class="photos">
+      <img src="s1.jpg" alt="Imagen 1" />
+      <img src="s2.jpg" alt="Imagen 2" />
+      <img src="s3.jpg" alt="Imagen 3" />
+    </div>
+
+    <!-- Video con tamaño y estilo -->
+    <div class="video-container">
+      <video controls poster="s.jpg">
+        <source src="s.mp4" type="video/mp4" />
+        Tu navegador no soporta la etiqueta de video.
+      </video>
+    </div>
+
+    <!-- Carta -->
+    <p>Mi niñito de ojitos bonitos...</p>
+    <p>Mediante esto quiero darte las gracias por absolutamente todo lo que haces por mi, no tengo la menor duda de que quiero pasar contigo el resto de mi vida, ya no me veo sin ti, y es que haces de todo por que yo este bien, tranquila, feliz, y me das el mundo en mis manitas, GRACIAS mi amorcito, yo no veo mi vida sin ti, no miento cuando digo que eres el amor de mi vida, tu ya eres parte de mis sueños y metas, sobre todo de mi futuro...</p>
+    <p>Mi hombrecito bello, no tengo palabras para agradecerte todo lo que me haces sentir y lo feliz que soy contigo, y no entiendo como puede existir una persona tan perfecta en este mundo tan feo, papi, estoy muy orgullosa de ti, de todo lo que logras, de lo mucho que te esfuerzas y sobre todo de las veces que lo intentas y jamas te rindes, eres una persona muy fuerte, pero no todo es un mundo de rosas, sabes perfectamente que a donde vayas voy contigo, jamás soltaré tu mano ni te dejaré solo, eres mi niño chiquito y yo toda la vida te voy a ver asi, si alguien te llega a hacer sentir mal claro que tambien me hiere a mi por que sabes perfectamente que toda mi vida trataré de hacerte sentir bien y que yo te daré todo de mi a manos abiertas justo por lo mismo, si fuera por mi quisiera que nadie te hiciera daño y poder cuidar de tu felicidad siempre, solo quiero cuidarte, eres mi bebe y jamas dejare de verte asi..</p>
+    <p>Pero sobre todo quiero que sepas que te amo,y que el futuro que vamos a construir va a ser lo que ambos siempre soñamos, y cuando lo logremos, algun dia nos sentaremos a platicar de cuando eramos unos peques soñando de tenerlo todo, te amo hombrecito de mi vida, aqui no solo tienes una novia, tienes un apoyo, y sobre todo una compañera de vida, no pienso soltarte aunque las cosas se pongan dificiles, TE AMO y por favor jamás lo olvides que sin ti no soy nada..❤️</p>
+    <!-- Otra imagen -->
+    <img src="s4.jpg" alt="Amor" />
+  </div>
+  <footer>
+    <p>Con todo mi amor, tu princesita❤️ </p>
+  </footer>
+</div>
+
+<!-- Scripts para música y corazones -->
+<script>
+  const music = document.getElementById('background-music');
+  const btn = document.querySelector('.music-top button');
+
+  function toggleMusic() {
+    if (music.paused) {
+      music.play();
+      btn.textContent = 'Pausar Música';
+    } else {
+      music.pause();
+      btn.textContent = 'Reproducir / Pausar Música';
+    }
+  }
+</script>
+
+</body>
+</html>
